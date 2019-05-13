@@ -122,16 +122,20 @@
         var metaUrlArray = [baseTableUrl, widowTableUrl, balenceUrl];
 
         function imgUrl(hauntNum, isTraitor) {
-            var idxType = (isTraitor) ? 't' : 's';
-            var urlArray = (isTraitor) ? traitorHauntUrlArray : survivalHauntUrlArray;
+            //var idxType = (isTraitor) ? 't' : 's';
+            //var urlArray = (isTraitor) ? traitorHauntUrlArray : survivalHauntUrlArray;
             //var url = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http%3A%2F%2Fimgur.com%2F' + urlArray[hauntNum - 1];
             //var survivalUrl = 'https://ccumaya.github.io/showHauntImg.html?t=t&i=wergfs_14';
-            var survivalUrl = 'https://ccumaya.github.io/showHauntImg.html?t=t&i='+ urlArray[hauntNum - 1];
+            //var survivalUrl = 'https://ccumaya.github.io/showHauntImg.html?t=t&i='+ urlArray[hauntNum - 1];
+            var url = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='+ encodeURI(aUrl(hauntNum, isTraitor));
             return url;
         }
         function aUrl(hauntNum, isTraitor) {
+            //var urlArray = (isTraitor) ? traitorHauntUrlArray : survivalHauntUrlArray;
+            //var url = 'http://imgur.com/' + urlArray[hauntNum - 1];
+            var idxType = (isTraitor) ? 't' : 's';
             var urlArray = (isTraitor) ? traitorHauntUrlArray : survivalHauntUrlArray;
-            var url = 'http://imgur.com/' + urlArray[hauntNum - 1];
+            var url = 'https://ccumaya.github.io/showHauntImg.html?t='+idxType+'&i='+ urlArray[hauntNum - 1];
             return url;
         }
         //1.base作祟表/2.widow作祟表/3.平衡調整 URL
@@ -606,7 +610,7 @@
     </div>
     <div style='background-color: #a2f193; padding: 20px;'>
         <input id="radBase"  name="verSelect" type="radio" value="base" />
-        <label for="radBase">基本版</label>
+0        <label for="radBase">基本版</label>
         <input id="radWidowExt" checked="checked" name="verSelect" type="radio" value="widow" />
         <label for="radWidowExt">望夫台擴充</label>
     </div>
